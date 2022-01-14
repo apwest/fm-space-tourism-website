@@ -3,6 +3,8 @@
     --color-accent: #D0D6F9;
     --color-gray: #979797;
     --color-background: #0B0D17;
+
+    --menu-blur: blur(40px);
 }
 
 *, *::before, *::after {
@@ -12,11 +14,25 @@
 }
 
 body {
+    height: 100vh;
     font-family: 'Barlow Condensed', sans-serif;
     color: var(--color-primary);
     background-color: var(--color-background);
-    background: url("./home/background-home-desktop.jpg") no-repeat;
     background-size: cover;
+}
+
+body.home {
+    background: 
+        var(--color-background) 
+        url("./home/background-home-desktop.jpg") 
+        no-repeat;
+}
+
+body.destination {
+    background: 
+        var(--color-background) 
+        url("./destination/background-destination-desktop.jpg") 
+        no-repeat;
 }
 
 a {
@@ -34,6 +50,13 @@ button {
     font-family: 'Bellefair', serif;
     font-size: 2rem;
     text-transform: uppercase;
+}
+
+button:hover {
+    box-shadow: 
+        rgba(255 255 255 / 10.36%)
+        0 0 0 88px;
+    cursor: pointer;
 }
 
 h1, h2, h3, h4 {
@@ -64,6 +87,13 @@ h4 {
 h5 {
     font-size: 1.75rem;
     letter-spacing: 4.75px;
+    color: var(--color-accent);
+}
+
+p {
+    font-family: "Barlow", sans-serif;
+    font-size: 1.125rem;
+    line-height: 2rem;
     color: var(--color-accent);
 }
 
@@ -113,7 +143,7 @@ nav {
     justify-content: center;
     padding: 0 2.5rem;
     background-color: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(4px);
+    backdrop-filter: var(--menu-blur);
     text-transform: uppercase;
 }
 
@@ -181,7 +211,7 @@ nav #menu.expanded {
     font-size: 1rem;
 
     background-color: rgba(255,255,255,.04);
-    backdrop-filter: blur(40px);
+    backdrop-filter: var(--menu-blur);
 }
 
 nav #menu.expanded li {
@@ -209,19 +239,33 @@ nav #menu-icon.expanded div {
     transform: scale(0);
 }
 
-.tab li {
+.tabs ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+.tabs li {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--color-accent);
+
     padding-bottom: 12px;
     border-bottom: 3px;
 }
 
+.tabs li.active {
+    color: var(--color-primary);
+}
+
 li.active,
 nav li:active,
-.tab li:active {
+.tabs li:active {
     border-bottom-color: var(--color-primary);
 }
 
 nav li:hover,
-.tab li:hover {
+.tabs li:hover {
     border-bottom-color: var(--color-gray);
 }
 
@@ -241,10 +285,26 @@ nav li:hover,
     width: min-content;
 }
 
-.hero p {
-    font-size: 1.125rem;
-    line-height: 2rem;
-    color: var(--color-accent);
+/***/
+
+section.content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100vw;
+    padding: 5vh 10vw;
+}
+
+.content > h5 > span {
+    color: var(--color-gray);
+    padding-right: 1.5rem;
+}
+
+.content > article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7vw;
 }
 
 /*********************
@@ -254,12 +314,18 @@ nav li:hover,
 /*** TABLET ***/
 
 @media only screen and (max-width: 768px) {
-    body {
+    body.home {
         background-image: url("./home/background-home-tablet.jpg");
+        background-position: bottom;
     }
     button {
         width: 242px;
         height: 242px;
+    }
+    button:hover {
+        box-shadow: 
+        rgba(255 255 255 / 10.36%)
+        0 0 0 77px;
     }
     h5 {
         font-size: 1.25rem;
@@ -296,14 +362,20 @@ nav li:hover,
 
 @media only screen and (max-width: 375px) {
     /* general */
-    body {
+    body.home {
         background-image: url("./home/background-home-mobile.jpg");
+        background-position: bottom;
     }
     button {
         width: 150px;
         height: 150px;
         font-size: 1.25rem;
         letter-spacing: 1.25px;
+    }
+    button:hover {
+        box-shadow: 
+        rgba(255 255 255 / 10.36%)
+        0 0 0 48px;
     }
     h1 {
         font-size: 5rem;
