@@ -13,3 +13,14 @@ function showMenu() {
         y.className = "menu-icon";
     }
 }
+
+function setDestination(name) {
+    document.querySelectorAll("article.destination").forEach(function(article) {
+        if ((article.id === name) && (article.className === "destination")) {
+            article.className += " active";
+        }
+        else {
+            article.className = "destination";
+        }
+    });
+}
