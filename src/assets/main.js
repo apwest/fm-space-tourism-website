@@ -24,3 +24,14 @@ function setDestination(name) {
         }
     });
 }
+
+function showCrewMember(name) {
+    document.querySelectorAll("article.crew").forEach(function(article) {
+        if ((article.id === name) && (article.className === "crew")) {
+            article.className += " active";
+        }
+        else {
+            article.className = "crew";
+        }
+    });
+}

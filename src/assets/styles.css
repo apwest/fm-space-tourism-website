@@ -7,32 +7,49 @@
     --menu-blur: blur(40px);
 }
 
+/*
+ *********   *********    *******    *********  ********** 
+ *********   *********   *********   *********  ********** 
+ **      **  **         **           **             **     
+ **      **  **         **           **             **     
+ ********    ********    ********    ********       **     
+ ********    ********     ********   ********       **     
+ **      **  **                  **  **             **     
+ **      **  **                  **  **             **     
+ **      **  *********   *********   *********      **     
+ **      **  *********    *******    *********      **     
+*/
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/*
+ *********     *****      *******    ********* 
+ *********    *******    *********   ********* 
+ **      **  **     **  **           **        
+ **      **  **     **  **           **        
+ ********    *********   ********    ********  
+ ********    *********    ********   ********  
+ **      **  **     **           **  **        
+ **      **  **     **           **  **        
+ *********   **     **   *********   ********* 
+ *********   **     **    *******    ********* 
+*/
+
+html {
+    height: 100%;
+}
+
 body {
-    height: 100vh;
+    min-height: 100%;
     font-family: 'Barlow', sans-serif;
+    font-weight: 200;
     color: var(--color-primary);
     background-color: var(--color-background);
     background-size: cover;
-}
-
-body.home {
-    background: 
-        var(--color-background) 
-        url("./home/background-home-desktop.jpg") 
-        no-repeat;
-}
-
-body.destination {
-    background: 
-        var(--color-background) 
-        url("./destination/background-destination-desktop.jpg") 
-        no-repeat;
 }
 
 a {
@@ -101,6 +118,50 @@ ul {
     list-style: none;
 }
 
+/*
+  ******     **            *****      *******      *******    *********    *******   
+ ********    **           *******    *********    *********   *********   *********  
+**      **   **          **     **  **           **           **         **          
+**           **          **     **  **           **           **         **          
+**           **          *********   ********     ********    ********    ********   
+**           **          *********    ********     ********   ********     ********  
+**           **          **     **           **           **  **                  ** 
+**       **  **          **     **           **           **  **                  ** 
+ *********   *********   **     **   *********    *********   *********   *********  
+  *******    *********   **     **    *******      *******    *********    *******   
+*/
+
+body.home {
+    background: 
+        var(--color-background) 
+        url("./home/background-home-desktop.jpg") 
+        no-repeat;
+}
+
+body.destination-data {
+    background: 
+        var(--color-background) 
+        url("./destination/background-destination-desktop.jpg") 
+        no-repeat;
+}
+
+body.crew-data {
+    display: flex;
+    flex-direction: column;
+    background: 
+        var(--color-background) 
+        url("./crew/background-crew-desktop.jpg") 
+        no-repeat;
+}
+
+.faded-some {
+    opacity: 0.5;
+}
+
+.faded-more {
+    opacity: 0.25;
+}
+
 .subheading-1 {
     font-family: 'Bellefair', serif;
     font-size: 1.75rem;
@@ -121,9 +182,39 @@ ul {
     opacity: .25;
 }
 
-/************************
- ***  HEADER SECTION  ***
- ***                  ***/
+.slider-1 {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.slider-1 li {
+    width: 15px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    opacity: 0.17;
+}
+
+.slider-1 li:hover {
+    opacity: 0.5;
+}
+
+.slider-1 li.active {
+    opacity: 1;
+}
+
+/*
+ **      **  *********    *****    *********    *********  *********  
+ **      **  *********   *******   **********   *********  *********  
+ **      **  **         **     **  **       **  **         **      ** 
+ **      **  **         **     **  **       **  **         **      ** 
+ **********  ********   *********  **       **  ********   ********   
+ **********  ********   *********  **       **  ********   ********   
+ **      **  **         **     **  **       **  **         **      ** 
+ **      **  **         **     **  **       **  **         **      ** 
+ **      **  *********  **     **  **********   *********  **      ** 
+ **      **  *********  **     **  *********    *********  **      ** 
+*/
 
 header {
     display: flex;
@@ -275,9 +366,18 @@ nav li:hover,
     border-bottom-color: var(--color-gray);
 }
 
-/**********************
- ***  HERO SECTION  ***
- ***                ***/
+/*
+ **      **  *********  *********     *******   
+ **      **  *********  *********    *********  
+ **      **  **         **      **  **       ** 
+ **      **  **         **      **  **       ** 
+ **********  ********   ********    **       ** 
+ **********  ********   ********    **       ** 
+ **      **  **         **      **  **       ** 
+ **      **  **         **      **  **       ** 
+ **      **  *********  **      **   *********  
+ **      **  *********  **      **    *******   
+*/
 
 .hero {
     display: flex;
@@ -296,13 +396,23 @@ nav li:hover,
 section.content {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     gap: 3rem;
     width: 100vw;
-    padding: 5vh 10vw;
+    height: 100%;
+    padding: 5vh 10vw 0;
+}
+
+.destination p {
+    min-height: 8rem;
+}
+
+.crew-data .content > h5 {
+    margin-bottom: -5rem;
 }
 
 .content > h5 > span {
-    color: var(--color-gray);
+    /* color: var(--color-primary); */
     padding-right: 1.5rem;
 }
 
@@ -311,6 +421,7 @@ section.content {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 7vw;
+    flex-grow: 1;
 }
 
 article:not([class~='active']) {
@@ -321,10 +432,22 @@ article > .details {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    /* for crew */
+    align-self: end;
+    margin-bottom: 10vh;
 }
 
-.details p {
+.details > h3 {
+    width: max-content; /* for crew member name */
+}
+
+.destination .details p {
     margin: -1.5rem 0 2rem;
+}
+
+.crew .details p {
+    width: 48ch;
+    height: 14rem;
 }
 
 .travel-info {
@@ -338,11 +461,35 @@ article > .details {
     color: var(--color-accent);
 }
 
-/*********************
- *** MEDIA QUERIES ***
- ***               ***/
+.crew .image {
+    text-align: right;
+    align-self: end;
+}
 
-/*** TABLET ***/
+.crew img {
+    max-width: 100%;
+}
+
+/*
+ **        **  *********  *********    ********    *****   
+ ***      ***  *********  **********   ********   *******  
+ ****    ****  **         **       **     **     **     ** 
+ ** **  ** **  **         **       **     **     **     ** 
+ **  ****  **  ********   **       **     **     ********* 
+ **   **   **  ********   **       **     **     ********* 
+ **        **  **         **       **     **     **     ** 
+ **        **  **         **       **     **     **     ** 
+ **        **  *********  **********   ********  **     ** 
+ **        **  *********  *********    ********  **     ** 
+*/
+
+/*
+ ***       #####    #    ####   #      #####  ##### 
+ *****       #     # #   #   #  #      #        #   
+ *******     #    #####  ####   #      ####     #   
+ *****       #    #   #  #   #  #      #        #   
+ ***         #    #   #  ####   #####  #####    #   
+ */
 
 @media only screen and (max-width: 768px) {
     body.home {
@@ -389,7 +536,13 @@ article > .details {
     }
 }
 
-/*** MOBILE ***/
+/*
+ ***       #     #   ####   ####   #####  #      ##### 
+ *****     ##   ##  #    #  #   #    #    #      #     
+ *******   # # # #  #    #  ####     #    #      ####  
+ *****     #  #  #  #    #  #   #    #    #      #     
+ ***       #     #   ####   ####   #####  #####  ##### 
+ */
 
 @media only screen and (max-width: 375px) {
     /* general */
