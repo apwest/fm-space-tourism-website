@@ -50,6 +50,7 @@ body {
     color: var(--color-primary);
     background-color: var(--color-background);
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 a {
@@ -132,26 +133,25 @@ ul {
 */
 
 body.home {
-    background: 
-        var(--color-background) 
-        url("./home/background-home-desktop.jpg") 
-        no-repeat;
+    background-image: url("./home/background-home-desktop.jpg");
 }
 
 body.destination-data {
-    background: 
-        var(--color-background) 
-        url("./destination/background-destination-desktop.jpg") 
-        no-repeat;
+    display: flex;
+    flex-direction: column;
+    background-image: url("./destination/background-destination-desktop.jpg");
 }
 
 body.crew-data {
     display: flex;
     flex-direction: column;
-    background: 
-        var(--color-background) 
-        url("./crew/background-crew-desktop.jpg") 
-        no-repeat;
+    background-image: url("./crew/background-crew-desktop.jpg");
+}
+
+body.technology-data {
+    display: flex;
+    flex-direction: column;
+    background-image: url("./technology/background-technology-desktop.jpg");
 }
 
 .faded-some {
@@ -160,6 +160,12 @@ body.crew-data {
 
 .faded-more {
     opacity: 0.25;
+}
+
+.nav-text {
+    font-size: 1rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
 }
 
 .subheading-1 {
@@ -203,6 +209,34 @@ body.crew-data {
     opacity: 1;
 }
 
+.slider-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-family: 'Bellefair', serif;
+    font-size: 2rem;
+}
+
+.slider-2 li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid rgba(255 255 255 / 25%);
+    border-radius: 50%;
+}
+
+.slider-2 li:hover {
+    border-color: rgba(255 255 255 / 100%);
+}
+
+.slider-2 li.active {
+    color: var(--color-background);
+    background-color: var(--color-primary);
+    border-color: rgba(255 255 255 / 100%);
+}
+
 /*
  **      **  *********    *****    *********    *********  *********  
  **      **  *********   *******   **********   *********  *********  
@@ -239,7 +273,7 @@ header .separator {
 nav {
     display: flex;
     justify-content: center;
-    padding: 0 2.5rem;
+    padding: 0 10vw;
     background-color: rgba(255, 255, 255, 0.04);
     backdrop-filter: var(--menu-blur);
     text-transform: uppercase;
@@ -403,6 +437,10 @@ section.content {
     padding: 5vh 10vw 0;
 }
 
+.technology-data .content {
+    gap: 1rem;
+}
+
 .destination p {
     min-height: 8rem;
 }
@@ -424,7 +462,15 @@ section.content {
     flex-grow: 1;
 }
 
-article:not([class~='active']) {
+.content > article.technology {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+    flex-grow: unset;
+}
+
+.content > article:not([class~='active']) {
     display: none;
 }
 
@@ -448,6 +494,11 @@ article > .details {
 .crew .details p {
     width: 48ch;
     height: 14rem;
+}
+
+.technology .details p {
+    width: 46ch;
+    height: 12rem;
 }
 
 .travel-info {
