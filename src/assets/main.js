@@ -16,8 +16,10 @@ function showMenu() {
 
 function setDestination(name) {
     document.querySelectorAll("article.destination").forEach(function(article) {
-        if ((article.id === name) && (article.className === "destination")) {
-            article.className += " active";
+        if (article.id === name) {
+            if (article.className === "destination") {
+                article.className += " active";
+            }
         }
         else {
             article.className = "destination";
@@ -27,11 +29,26 @@ function setDestination(name) {
 
 function showCrewMember(name) {
     document.querySelectorAll("article.crew").forEach(function(article) {
-        if ((article.id === name) && (article.className === "crew")) {
-            article.className += " active";
+        if (article.id === name) {
+            if (article.className === "crew") {
+                article.className += " active";
+            }
         }
         else {
             article.className = "crew";
+        }
+    });
+}
+
+function showTechInfo(name) {
+    document.querySelectorAll("article.technology").forEach(function(article) {
+        if (article.id === name) {
+            if (article.className === "technology") {
+                article.className += " active";
+            }
+        }
+        else {
+            article.className = "technology";
         }
     });
 }
