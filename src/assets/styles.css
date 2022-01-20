@@ -301,30 +301,22 @@ nav a {
 
 nav .menu-icon {
     display: none;
-    position: relative;
-}
-
-nav .menu-icon,
-nav .menu-icon::after,
-nav .menu-icon::before {
     width: 24px;
-    height: 3px;
-    background-color: var(--color-accent);
+    height: 21px;
+    padding: 4px;
+    position: relative;
+    background: url('./shared/icon-hamburger.svg') center center no-repeat;
 }
 
-nav .menu-icon::after,
 nav .menu-icon::before {
-    content: "";
+    content: '';
     position: absolute;
-    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-nav .menu-icon::before {
-    top: -9px;
-}
-
-nav .menu-icon::after {
-    top: 9px;
+nav .menu-icon.expanded {
+    background: url('./shared/icon-close.svg') center center no-repeat;
 }
 
 nav #menu.expanded {
@@ -353,22 +345,6 @@ nav #menu.expanded li {
 
 nav #menu.expanded span {
     display: inline-block;
-}
-
-nav #menu-icon.expanded {
-    background-color: transparent;
-}
-
-nav #menu-icon.expanded:before {
-    transform: translateY(9px) rotate(45deg);
-}
-  
-nav #menu-icon.expanded:after {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-nav #menu-icon.expanded div {
-    transform: scale(0);
 }
 
 .tabs ul {
